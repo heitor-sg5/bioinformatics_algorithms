@@ -100,6 +100,15 @@ class ORFBase:
             score += math.log((p + 1e-12) / (q + 1e-12))
         return score
     
+    start_priors = {"ATG": 0.80,"GTG": 0.15,"TTG": 0.05}
+
+    def start_codon_prior_score(self, seq):
+        weight = 0.1
+        start = seq[:3]
+        P_start = self.start_priors.get(start, 0.01)
+        P_bg = 1.0 / 3.0
+        return weight * math.log((P_start + 1e-9) / (P_bg + 1e-9))
+    
 class FirstPassORF(ORFBase):
     def genome_to_vectors(self, genome, rev_genome, codon_to_vector):
         frames = []
@@ -214,6 +223,7 @@ class SecondPassORF(ORFBase):
         for orf in orfs:
             score = self.log_odds_score(orf['seq'], codon_to_vector, c_transitions, nc_transitions)
             score += self.pwm_score(orf['upstream'], pwm, base_transitions)
+            score += self.start_codon_prior_score(orf['seq'])
             orf['score'] = score
             if len(leaderboard) < L:
                 heapq.heappush(leaderboard, (orf['score'], orf))
@@ -226,6 +236,7 @@ class SecondPassORF(ORFBase):
         for orf in orfs:
             score = self.log_odds_score(orf['seq'], codon_to_vector, c_transitions, nc_transitions)
             score += self.pwm_score(orf['upstream'], pwm, base_transitions)
+            score += self.start_codon_prior_score(orf['seq'])
             orf['score'] = score
         return orfs
 
@@ -368,7 +379,6 @@ class TwoPassORF(FirstPassORF, SecondPassORF, GibbsSamplerMotifSearch):
             if prev_pass_set is not None and current_pass_set == prev_pass_set:
                 break
             prev_pass_set = current_pass_set
-            c_transitions = new_c_transitions
         final_filtered_orfs = self.motif_search(overlap_orfs, k, L, n=200)
         return final_filtered_orfs
 

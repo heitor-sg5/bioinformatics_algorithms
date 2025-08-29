@@ -71,4 +71,4 @@ def main():
     print(f"Total Runtime: {total_runtime:.1f} seconds")
 
 if __name__ == "__main__":
-    main()
+    main()  

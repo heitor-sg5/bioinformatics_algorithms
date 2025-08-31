@@ -114,6 +114,13 @@ Bioinformatics-Algorithms/
 │   ├── cpg_island_finder.py
 │   ├── test.txt
 │   └── results.txt
+├── ncbi_tool/
+│   ├── __init__.py
+│   ├── gff_parser.py
+│   ├── ncbi_fetch.py
+│   └── pubmed_fetch.py
+├── cli.py
+├── requirements.txt
 └── README.md
 ```
 
@@ -124,7 +131,7 @@ Bioinformatics-Algorithms/
 Prerequisites:
 
 - Python 3.8 or higher
-- Required Python packages: numpy, biopython, matplotlib
+- Required Python packages: numpy, biopython, matplotlib, etc
 - MUSCLE for sequence alignment tasks
 
 1. Clone the repository:
@@ -137,7 +144,7 @@ cd Bioinformatics-Algorithms
 2. Install Python dependencies:
 
 ```bash
-pip install numpy biopython matplotlib
+pip install -r requirements.txt
 ```
 
 3. Install MUSCLE:

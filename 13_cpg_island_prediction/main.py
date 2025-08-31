@@ -52,18 +52,21 @@ def load_fasta(file_path):
     return text
 
 def main():
+    print("Select an eukaryote genome FASTA for prediction")
     text = get_fasta_file()
     text = text.upper()
     text = text.replace('N', '')
     L, w, s, p, min_length, max_length, min_gc, min_obsexp, t, merge_gap = get_user_inputs()
     cpg = FindCpGIslands()
     start_time = time.time()
+    print("Searching for CpG islands...")
     cpg_islands = cpg.run(text, L, s, w, p, min_gc, min_obsexp, min_length, max_length, t, merge_gap)
     results = []
     if not cpg_islands:
         results.append("No CpG islands found.\n")
     else:
         disp = Charts()
+        print("Analysing CpG islands...")
         summary = disp.display(cpg_islands, text)
         results.extend(summary)
         results.append(f"{len(cpg_islands)} CpG islands found.\n\n")

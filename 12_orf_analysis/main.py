@@ -47,16 +47,19 @@ def load_fasta(file_path):
     return text
 
 def main():
+    print("Select a bacterial genome FASTA for analysis")
     text = get_fasta_file()
     min_size, max_overlap, k, t, L = get_user_inputs()
     tp = TwoPassORF()
     start_time = time.time()
+    print("Searching for ORFs...")
     orfs = tp.two_pass(text, min_size, max_overlap, t, L, k)
     results = []
     if not orfs:
         results.append("No ORFs found.\n")
     else:
         disp = Charts()
+        print("Analysing ORFs...")
         summary = disp.display(orfs, text)
         results.extend(summary)
         results.append(f"{len(orfs)} ORFs found.\n\n")

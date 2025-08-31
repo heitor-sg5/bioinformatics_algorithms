@@ -63,6 +63,7 @@ def load_fasta(file_path):
     return sequences
 
 def main():
+    print("Select a list of genomes FASTA for alignment")
     sequences = get_fasta_files()
     if not sequences:
         return
@@ -103,6 +104,7 @@ def main():
     results = []
     overall_start = time.time()
     for algo_name, algo in algorithms:
+        print(f"Running {algo_name}...")
         start_time = time.time()
         if align_scope == 'p':
             aligned_seqs, score = algo.run(sequences[0], sequences[1])

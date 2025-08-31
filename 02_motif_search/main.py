@@ -50,6 +50,7 @@ def load_fasta(file_path):
     return sequences
 
 def main():
+    print("Select a list of genomes FASTA for search")
     sequences = get_fasta_file()
     k, n = get_user_inputs()
     algorithms = [
@@ -60,6 +61,7 @@ def main():
     results = []
     overall_start = time.time()
     for algo_name, algo in algorithms:
+        print(f"Running {algo_name}...")
         start_time = time.time()
         motifs = algo.run(sequences, k, len(sequences), n)
         runtime = time.time() - start_time

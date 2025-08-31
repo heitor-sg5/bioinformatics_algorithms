@@ -45,6 +45,7 @@ def load_data_matrix(file_path):
     return data
 
 def main():
+    print("Select a text file with your data for clustering")
     data = get_data_file()
     k, beta, theta, linkage = get_user_inputs()
     results = []
@@ -61,6 +62,7 @@ def main():
         ("Hierarchical Clustering", HierarchicalClustering(linkage))
     ]
     for algo_name, algo in algorithms:
+        print(f"Running {algo_name}...")
         start_time = time.time()
         result = algo.run(data, k)
         runtime = time.time() - start_time

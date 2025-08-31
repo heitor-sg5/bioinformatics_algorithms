@@ -42,9 +42,11 @@ def load_fasta(file_path):
     return text
     
 def main():
+    print("Select a peptide FASTA for simulation")
     sequence = get_fasta_file()
     p, n, m, t, c = get_user_inputs()
     ts = TheoreticalSpectra()
+    print("Generating theoretical spectra...")
     theoretical_spectrum = ts.cyclic_spectrum_with_error(sequence, 0.0)
     error_spectrum = ts.cyclic_spectrum_with_error(sequence, p)
     algorithms = [
@@ -59,6 +61,7 @@ def main():
     ]
     overall_start = time.time()
     for algo_name, algo in algorithms:
+        print(f"Running {algo_name}...")
         start_time = time.time()
         results.append(f"--- {algo_name} ---\n")
         if algo_name == 'Branch and Bound Cyclopeptide Sequencing':

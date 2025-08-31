@@ -61,14 +61,17 @@ def load_fasta(file_path):
     return sequences
 
 def main():
+    print("Select two genomes FASTA for rearrangement")
     seqs1, seqs2 = get_fasta_files()
     k, max_distance, min_size, scale, scale_unit = get_user_inputs()
     is_pairwise = len(seqs1) == 1 and len(seqs2) == 1
     print(f"{'Pairwise' if is_pairwise else 'Multi-chromosome'} rearrangement selected.")
     results = []
     overall_start = time.time()
+    print("Building synteny blocks...")
     synteny = SyntenyBlockConstruction(k, max_distance, min_size)
     if is_pairwise:
+        print("Running Breakpoint Sort...")
         algo_name = "Breakpoint Sort with Synteny Blocks"
         start_time = time.time()
         shared_kmers = synteny.find_shared_kmers(seqs1[0], seqs2[0])
@@ -87,6 +90,7 @@ def main():
         results.append(f"Reversal Distance: {distance}\n\n")
         synteny.plot_dotplot(shared_kmers, len(seqs1[0]), len(seqs2[0]), scale, scale_unit)
     else:
+        print("Running Two-Break Sort...")
         algo_name = "Two-Break Sort with Synteny Blocks"
         start_time = time.time()
         shared_kmers = synteny.find_shared_kmers_multichr(seqs1, seqs2)

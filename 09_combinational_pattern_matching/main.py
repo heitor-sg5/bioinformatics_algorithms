@@ -57,6 +57,7 @@ def main():
     base = PatternMatchingBase()
     results = []
     if analysis_type == 1:
+        print("Select a genome FASTA for search")
         text = get_fasta_file()
         pattern = input("Enter pattern to find: ").strip()
         overall_start = time.time()
@@ -68,6 +69,7 @@ def main():
             ("Suffix Array Matching", SuffixArrayMatching())
         ]
         for algo_name, algo in algorithms:
+            print(f"Running {algo_name}...")
             start_time = time.time()
             positions, count = algo.run(text, pattern)
             runtime = time.time() - start_time
@@ -77,7 +79,9 @@ def main():
             results.append(f"Total occurrences: {count}\n")
             results.append(f"Positions: {positions}\n\n")
     elif analysis_type == 2:
+        print("Select a genome FASTA for search")
         text = get_fasta_file()
+        print("Select a text file with reads for search")
         reads = get_reads_file()
         d_input = input("Enter d (default 1): ").strip()
         d = int(d_input) if d_input.isdigit() else 1
@@ -90,6 +94,7 @@ def main():
             ("Approximate Pattern Matching", ApproximatePatternMatching(d))
         ]
         for algo_name, algo in algorithms:
+            print(f"Running {algo_name}...")
             start_time = time.time()
             result = algo.run(text, reads)
             runtime = time.time() - start_time
@@ -103,7 +108,9 @@ def main():
                     results.append(f"Positions: {positions}\n")
             results.append("\n")
     else:
+        print("Select a genome FASTA for comparison")
         text1 = get_fasta_file()
+        print("Select a second genome FASTA for comparison")
         text2 = get_fasta_file()
         overall_start = time.time()
         start_time = time.time()

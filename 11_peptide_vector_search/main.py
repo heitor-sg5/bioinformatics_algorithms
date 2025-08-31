@@ -85,12 +85,16 @@ def load_fasta(file_path):
     return peptides
 
 def main():
+    print("Select a text file with your spectra for search")
     spectra = get_spectra_file()
+    print("Select a peptide database FASTA for search")
     peptides = get_fasta_file()
     k, d = get_user_inputs()
+    print("Building vectors...")
     spectral_vectors = [PeptideBase.spectrum_to_vector(s) for s in spectra]
     results = []
     overall_start = time.time()
+    print("Searching for peptides...")
     ps = PeptideSearch(k, peptides, spectral_vectors)
     pms = ps.run()
     for i, match in enumerate(pms, 1):

@@ -38,10 +38,13 @@ def load_fasta(file_path):
     return text
 
 def main():
+    print("Select a bacterial genome FASTA for prediction")
     text = get_fasta_file()
     k, d, L = get_user_inputs()
     overall_start = time.time()
+    print("Finding GC skew...")
     skew = GCSkews()
+    print("Finding potential DnaA box...")
     kmers = FrequentKmers()
     start_time = time.time()
     min_skew_pos = skew.run(text)

@@ -35,9 +35,11 @@ def load_fasta(file_path):
     return text
 
 def main():
+    print("Select a genome FASTA for simulation")
     genome = get_fasta_file()
     k, d = get_user_inputs()
     gs = Sequencing()
+    print("Generating read pairs...")
     kmers_str = gs.generate_kmers(genome, k)
     paired_reads_str = gs.generate_read_pairs(genome, k, d)
     with open('reads_and_pairs.txt', 'w') as rp_file:
@@ -54,6 +56,7 @@ def main():
     results = []
     overall_start = time.time()
     for algo_name, algo in algorithms:
+        print(f"Running {algo_name}...")
         start_time = time.time()
         if algo_name == 'Paired De Bruijn Eulerian Path':
             result = algo.run(paired_reads_str)

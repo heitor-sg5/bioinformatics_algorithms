@@ -71,10 +71,13 @@ def load_fastas(file_path):
     return sequences
 
 def main():
+    print("Select a list of genomes FASTA for alignment")
     sequences = get_fasta_files()
+    print("Select a genome FASTA for classification")
     x = get_fasta_file()
     theta, pseudocount, iterations = get_user_inputs()
     phmm = ProfileHMM()
+    print("Building profile HMM from training alignment...")
     hmm, states, transition, emission = phmm.build_profile(x, theta, pseudocount, sequences)
     with open("hmm_matrices.txt", "w") as f:
         f.write("---Initialized HMM---\n")
@@ -82,6 +85,7 @@ def main():
     results = []
     overall_start = time.time()
     start_time = time.time()
+    print("Finding hidden path...")
     path, prob = FindPath(states, transition, emission, iterations).run(x)
     runtime = time.time() - start_time
     results.append("---Initialized HMM---\n")
@@ -95,6 +99,7 @@ def main():
         ("Most Divergent", MostDivergent(states, transition, emission, iterations))
     ]
     for algo_name, algo in algorithms:
+        print(f"Running {algo_name}...")
         if algo_name == "Most Divergent":
             start_time = time.time()
             prob, index = algo.run(sequences)

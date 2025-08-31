@@ -49,12 +49,14 @@ def load_fasta(file_path):
     return sequences
 
 def main():
+    print("Select a list of genomes FASTA for tree construction")
     sequences = get_fasta_file()
     matrix_type, matrix_name = get_user_inputs()
     results = []
     overall_start = time.time()
     distance_base = DistanceMatrixBase()
     if matrix_type == 2:
+        print("Running Small Parsimony with NNI...")
         algo_name = "Small Parsimony with NNI"
         start_time = time.time()
         aligned_seqs = distance_base.remove_indel_columns(sequences)
@@ -76,6 +78,7 @@ def main():
         results.append("\n")
     else:
         start_time = time.time()
+        print("Building distance matix...")
         dist_matrix = distance_base.build_distance_matrix(sequences, matrix_type)
         matrix_str = f"{matrix_name}:\n"
         for row in dist_matrix:
@@ -86,6 +89,7 @@ def main():
             ("Neighbor Joining", NeighborJoining())
         ]
         for algo_name, algo in algorithms:
+            print(f"Running {algo_name}...")
             start_time = time.time()
             tree = algo.run(dist_matrix, list(range(len(sequences))))
             runtime = time.time() - start_time

@@ -192,6 +192,7 @@ Where:
   - `gff` for parsing and summarizing GTF/GFF files
   - `ncbi` for fetching NCBI records
   - `pubmed` for searching and summarizing PubMed papers
+  - `chart` for displaying data in charts
 
 - `<command>` is the specific action (e.g., `summarize`, `fetch`, `search`)
 

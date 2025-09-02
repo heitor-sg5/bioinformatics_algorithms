@@ -30,7 +30,7 @@ This repository contains implementations of core algorithms from Bioinformatics 
 - **Peptide Vector Search** – sequences linear peptides from vector spectra and searches for database matches
 - **ORF Analysis** - identifies and scores open reading frames using Markov models and motif search with position weight matrices.
 - **CpG Island Prediction** - finding CpG-rich regions using GC content, observed/expected CpG ratios, and first-order Markov model scoring
-- **HMM Gene Prediction** - exon/intron gene prediction using hidden Markov models trained on known annotaed genomes
+- **HMM Gene Prediction** - exon/intron gene prediction using hidden Markov models trained on known annotated genomes
 
 ---
 

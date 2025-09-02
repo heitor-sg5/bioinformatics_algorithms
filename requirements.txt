@@ -6,3 +6,4 @@ gffutils>=0.10.1
 matplotlib>=3.7
 openpyxl>=3.1
 requests>=2.31
+hmmlearn>=0.30.1

@@ -43,10 +43,12 @@ python cli.py pubmed search "CRISPR"
 ```
 
 2. Search PubMed by multiple keywords 
+
 2a. (OR statement)
 ```bash
 python cli.py pubmed search "CRISPR, genome editing"
 ```
+
 2b. (AND statement)
 ```bash
 python cli.py pubmed search "CRISPR AND genome editing"
@@ -72,10 +74,12 @@ python cli.py pubmed search "CRISPR, genome editing" --min_count 2
 ```bash
 python cli.py pubmed search "CRISPR" --recent
 ```
+
 6b. (Oldest)
 ```bash
 python cli.py pubmed search "CRISPR" --oldest
 ```
+
 6c. (Keyword count)
 ```bash
 python cli.py pubmed search "CRISPR" --keyword

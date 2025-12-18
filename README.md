@@ -1,7 +1,7 @@
 # Bioinformatics Algorithms
 
 ## Overview
-This repository contains implementations of core algorithms from Bioinformatics Algorithms: An Active Learning Approach by Phillip Compeau & Pavel Pevzner, as well as some of my own bioinformatics projects. In addition, the repository includes a command-line interface with practical bioinformatics utilities such as GTF/GFF parsers, NCBI genome fetchers, and PubMed search tools. Together, these scripts offer both educational implementations of key computational techniques and practical tools for everyday bioinformatics workflows.
+This repository contains my Python implementations of core algorithms presented in *Bioinformatics Algorithms: An Active Learning Approach* by Phillip Compeau and Pavel Pevzner. The implementations were developed to reinforce my understanding of algorithmic thinking in bioinformatics. This repository serves both as a learning record and as a reference implementation for fundamental bioinformatics methods.
 
 ---
 
@@ -28,10 +28,6 @@ This repository contains implementations of core algorithms from Bioinformatics 
 - **Combinatorial Pattern Matching** – efficient pattern search algorithms  
 - **HMM Classification Analysis** – sequence classification using profile hidden Markov model matrices
 - **Peptide Vector Search** – sequences linear peptides from vector spectra and searches for database matches
-- **ORF Analysis** - identifies and scores open reading frames using Markov models and motif search with position weight matrices.
-- **CpG Island Prediction** - finding CpG-rich regions using GC content, observed/expected CpG ratios, and first-order Markov model scoring
-- **HMM Gene Prediction** - exon/intron gene prediction using hidden Markov models trained on known annotated genomes
-- **PCA HGT Prediction** - identifying potential horizontal gene transfer regions using principal component analysis and DBSCAN clustering
 
 ---
 
@@ -106,38 +102,7 @@ Bioinformatics-Algorithms/
 │   ├── test1.txt
 │   ├── test2.txt
 │   └── results.txt
-├── 12_orf_analysis/
-│   ├── main.py
-│   ├── orf_analysis.py
-│   ├── test.txt
-│   └── results.txt
-├── 13_cpg_island_prediction/
-│   ├── main.py
-│   ├── cpg_island_finder.py
-│   ├── test.txt
-│   └── results.txt
-├── 14_hmm_gene_prediction/
-│   ├── main.py
-│   ├── gene_prediction.py
-│   ├── test1.gff3
-│   ├── test2.fasta
-│   ├── test3.fasta
-│   └── results.txt
-├── 15_pca_hgt_prediction/
-│   ├── main.py
-│   ├── hgt_prediction.py
-│   ├── test1.gff3
-│   ├── test2.fasta
-│   └── results.txt
-├── bio_tools/
-│   ├── __init__.py
-│   ├── gff_parser.py
-│   ├── ncbi_fetch.py
-│   ├── pubmed_fetch.py
-│   └── chart_builder.py
-├── cli.py
 ├── requirements.txt
-├── COMMANDS.md
 └── README.md
 ```
 
@@ -192,28 +157,6 @@ python main.py
 3. The script will prompt you for the required inputs (files, parameters).
 
 - If no files or parameters are selected, it will automatically use the provided test files and default variables.
-
-### Biotools
-
-The `bio_tool` folder provides a unified CLI for working with data display, GFF files, NCBI records, and PubMed searches. The general command format is:
-
-```bash
-python cli.py <tool> <command> [options]
-```
-
-Where:
-
-- `<tool>` is one of:
-  - `gff` for parsing and summarizing GTF/GFF files
-  - `ncbi` for fetching NCBI records
-  - `pubmed` for searching and summarizing PubMed papers
-  - `chart` for displaying data in charts
-
-- `<command>` is the specific action (e.g., `summarize`, `fetch`, `search`)
-
-- `[options]` are tool-specific flags (e.g., `--accession`, `--max`, `--out`)
-
-All commands are listed in `COMMANDS.md`.
 
 ---
 

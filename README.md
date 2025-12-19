@@ -11,7 +11,6 @@ This repository contains my Python implementations of core algorithms presented 
 - [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Author](#author)
 - [References](#references)
 
 ---
@@ -157,14 +156,6 @@ python main.py
 3. The script will prompt you for the required inputs (files, parameters).
 
 - If no files or parameters are selected, it will automatically use the provided test files and default variables.
-
----
-
-## Author
-
-Heitor Gelain do Nascimento | 
-Email: heitorgelain@outlook.com | 
-GitHub: @heitor-sg5
 
 ---
 

@@ -137,7 +137,6 @@ pip install -r requirements.txt
 ---
 
 ## Usage
-### Algorithms
 
 Each topic folder contains a `main.py` script that runs the corresponding algorithms.  
 

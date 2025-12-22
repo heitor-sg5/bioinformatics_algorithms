@@ -5,16 +5,6 @@ This repository contains my Python implementations of core algorithms presented 
 
 ---
 
-## Table of Contents:
-- [Overview](#bioinformatics-algorithms)
-- [Covered Topics](#covered-topics)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-- [References](#references)
-
----
-
 ## Covered Topics
 - **Origin Finding** – detecting replication origins in bacterial genomes  
 - **Motif Search** – identifying common motifs across DNA sequences  
